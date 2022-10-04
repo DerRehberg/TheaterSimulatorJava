@@ -10,13 +10,14 @@ public class Mouse extends MouseAdapter {
     private int y;
     static byte selectedStick = 1;
     boolean newstick = true;
+    boolean Curtain = false;
 
     public void mousePressed(MouseEvent e) {
         x = e.getX();
         y = e.getY();
         for(Stick stick : Stick.Sticks)
         {
-            if(stick.Stickrect.contains(x,y) && newstick)
+            if(stick.Stickrect.contains(x,y) && newstick && !Curtain)
             {
                 selectedStick = (byte)(stick.id -1);
                 newstick = false;
@@ -33,12 +34,14 @@ public class Mouse extends MouseAdapter {
         if(Main.Curtain1.contains(x,y) && Main.Curtain1.x + dx <= 0)
         {
                 Main.Curtain1.x += dx;
+                Curtain = true;
         }else if(Main.Curtain2.contains(x,y) && Main.Curtain2.x + dx >= 682)
         {
             Main.Curtain2.x += dx;
+            Curtain = true;
         }
 
-        if(!newstick)
+        if(!newstick && !Curtain)
         {
             Stick.Sticks.get(selectedStick).Stickrect.x += dx;
             Stick.Sticks.get(selectedStick).Stickrect.y += dy;
@@ -58,6 +61,7 @@ public class Mouse extends MouseAdapter {
     public void mouseReleased(MouseEvent e)
     {
         newstick = true;
+        Curtain = false;
     }
 
 }
