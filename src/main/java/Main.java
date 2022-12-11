@@ -43,7 +43,7 @@ public class Main extends JFrame{
         ReadBackgrounds();
         ReadPuppets();
         Stick.init();
-        for(int i = 0; i<1; i++)
+        for(int i = 0; i<Puppet.Puppettexts.size(); i++)
         {
             Puppet.Puppets.add(new Puppet());
         }
