@@ -19,7 +19,7 @@ public class Main extends JFrame{
      int Curtain = 0;
      static Rectangle Curtain1,Curtain2;
      //Wall.png Duplizieren je nach größe und wie man zieht
-     boolean Curtainbool = true;
+     boolean Curtainbool = false;
 
     File dir = new File("TheaterTextures");
 
